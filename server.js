@@ -1,22 +1,13 @@
+// 라즈베리파이 서버 파일
 const express = require('express');
 const app = express();
 
-app.listen(8080, "0.0.0.0", () => {
-    console.log("Server Start");
+const PORT = 8080;
+
+app.get('/', (req, res) => {
+    res.send('안녕하세요! 서버가 정상적으로 실행 중입니다.');
 });
 
-app.get('/pet', function(req, res){
-    res.send('펫용품 쇼핑 가능한 사이트입니다');
-});
-
-app.get('/beauty', function(req, res){
-    res.send('뷰티쇼핑 페이지 입니다');
-});
-
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/write', function(req, res){
-    res.sendFile(__dirname + '/write.html');
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on ${PORT}`);
 });
